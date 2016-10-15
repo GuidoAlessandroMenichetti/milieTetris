@@ -12,7 +12,7 @@ all: $(PROJECT).velf
 $(PROJECT).velf: $(PROJECT).elf
 	$(STRIP) -g $<
 	vita-elf-create $(PROJECT).elf $(PROJECT).velf db.json
-	vita-make-fself $(PROJECT).velf	eboot.bin
+	vita-make-fself -s $(PROJECT).velf eboot.bin
 	vita-mksfoex -s TITLE_ID=GBOT00001 $(PROJECT) sce_sys/param.sfo
 	7z a -tzip $(PROJECT).vpk -r sce_sys/* eboot.bin 
 	rm $(OBJS) *.elf *.velf *.bin
